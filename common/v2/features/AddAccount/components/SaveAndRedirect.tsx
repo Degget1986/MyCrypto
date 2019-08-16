@@ -42,10 +42,9 @@ function SaveAndRedirect(payload: { formData: FormData }) {
         networkId: payload.formData.network as NetworkId,
         wallet: payload.formData.accountType,
         dPath: payload.formData.derivationPath,
-        assets: [{ uuid: newAssetID, balance: '0', timestamp: Date.now() }],
-        balance: '0',
+        assets: [{ uuid: newAssetID, balance: '0', mtime: Date.now() }],
         transactions: [],
-        timestamp: 0
+        mtime: 0
       };
       const newLabel: AddressBook = {
         label: findNextUnusedDefaultLabel(account.networkId),

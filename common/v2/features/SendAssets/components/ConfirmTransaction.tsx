@@ -4,7 +4,7 @@ import { Address, Button, Network } from '@mycrypto/ui';
 
 import feeIcon from 'common/assets/images/icn-fee.svg';
 import sendIcon from 'common/assets/images/icn-send.svg';
-import { AddressBookContext } from 'v2/services/Store';
+import { AddressBookContext, getBalanceFromAccount } from 'v2/services/Store';
 import { Amount } from 'v2/components';
 import {
   fromWei,
@@ -145,7 +145,9 @@ export default function ConfirmTransaction({ txConfig, onComplete }: IStepCompon
                   {userAssetBalance} {asset.ticker} <br />{' '}
                 </>
               )}
-              {`${senderAccount ? senderAccount.balance : 'Unknown'} ${baseAsset.ticker}`}
+              {`${senderAccount ? getBalanceFromAccount(senderAccount) : 'Unknown'} ${
+                baseAsset.ticker
+              }`}
             </div>
           </div>
           <div className="ConfirmTransaction-details-row">

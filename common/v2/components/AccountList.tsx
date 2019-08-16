@@ -10,7 +10,8 @@ import {
   AccountContext,
   SettingsContext,
   getCurrentsFromContext,
-  getLabelByAccount
+  getLabelByAccount,
+  getBalanceFromAccount
 } from 'v2/services/Store';
 import { DashboardPanel } from './DashboardPanel';
 import './AccountList.scss';
@@ -78,7 +79,7 @@ function buildAccountTable(accounts: ExtendedAccount[], deleteAccount: DeleteAcc
         <Network key={index + bodyItemCount++} color="#a682ff">
           {account.networkId}
         </Network>,
-        <Typography key={index + bodyItemCount++}>{account.balance}</Typography>,
+        <Typography key={index + bodyItemCount++}>{getBalanceFromAccount(account)}</Typography>,
         <DeleteButton
           key={index + bodyItemCount++}
           onClick={handleAccountDelete(deleteAccount, account.uuid)}
